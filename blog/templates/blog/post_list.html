@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post List</title>
+    {% load staticfiles%}
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+      .box{
+        width:400px; height:auto;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        display:inline-block;
+        margin-left:50px;
+        margin-bottom:20px
+      }
+      img{
+        width:380px; height:380px;
+        margin:auto; display:block;
+      }
+      #title{
+        text-align:center;
+        font-size:130px;
+        font-family: 'Lobster', cursive;
+      }
+      p{
+        margin-left:10px;
+      }
+      .label{
+        color: orangered;
+        font-family: 'Lobster', cursive;
+      }
+      .box_title{
+        text-align:center;
+        color:orangered;
+        font-family: 'Lobster', cursive;
+      }
+      #title_small{
+            font-size:30px;
+            color:orangered;
+      }
+      .description{
+        height:100px;
+      }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1 id="title">Blog <span id="title_small">made with Django</span></h1>
+        {% for post in object_list %}
+        <div class="box">
+            <p class="box_title">{{post.title}}</p>
+            <div class="imgBox">
+                <img src="{{post.image.url}}">
+            </div>
+            <p class="description"><span class="label">Description:</span>{{ post.description }}</p>
+            <p><span class="label">Create_date: </span> {{ post.create_date }}</p>
+            <p><span class="label">Modify_date: </span> {{ post.modify_date }}</p>
+        </div>
+        {% endfor %}
+
+
+    </div>
+</body>
+</html>
